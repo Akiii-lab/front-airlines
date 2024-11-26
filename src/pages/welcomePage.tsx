@@ -5,19 +5,17 @@ import { Features } from "@/components/features"
 import { Header } from "@/components/header"
 import { InfoCards } from "@/components/info-cards"
 import { useState } from "react"
+import { Flys } from "@/components/flys"
 
 export function WelcomePage() {
     const [isasideOpen, setIsasideOpen] = useState(false)
     const [recentSearches, setRecentSearches] = useState<RecentSearch[]>([]);
-    const [isLogin , setIsLogin] = useState(true);
     const [inVuelos, setInVuelos] = useState(false);
 
 
     return (
         <div className="flex flex-col min-h-screen overflow-hidden">
             <Header
-                isLogin = {isLogin}
-                setIsLogin={setIsLogin}
                 isAsideOpen={isasideOpen}
                 setAsideOpen={setIsasideOpen}
             />
@@ -42,9 +40,10 @@ export function WelcomePage() {
                     {/* parte derecha de la pagina donde esta todo */}
                     {inVuelos ?
                     (
-                        <div>
-                            hola
-                        </div>
+                        <Flys
+                            setInVuelos={setInVuelos}
+                            inVuelos={inVuelos}
+                        ></Flys>
                     )
                     :
                     (

@@ -2,13 +2,13 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { useEffect, useState } from "react";
 import { Cliente } from "./interfaces/client";
 import Sherk from '@/assets/images.jpg'
+import { useStoreToken } from "@/lib/token";
 
 const URL = "http://localhost:8080/api/v1/cliente/itself"
 export function ProfileAvatar() {
     const [actualUser, setActualUser] = useState<Cliente>();
-
+    const {token} = useStoreToken();
     const fetchUser = async() => {
-        const token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqZG9lQGRvZSIsImlhdCI6MTczMjYyODY0NSwiZXhwIjoxNzMyNjMyMjQ1fQ.cRXZuEwYMoFptQBHaHmwy5M9ENbs6KIgHb_t7SfUn1-jK1R-RKCVl2NYZLpdjdszV3tQeTvZIldJhrmWaHz_CQ";
         const res = await fetch(URL,{
             method: "GET",
             headers: {
@@ -22,7 +22,6 @@ export function ProfileAvatar() {
         }
         try {
             const userResponse = await res.json();
-            console.log("Usuario recibido", userResponse);
             setActualUser(userResponse.Cliente);
         } catch (error) {
             console.error("Error al procesar la respuesta JSON:", error);
@@ -34,7 +33,7 @@ export function ProfileAvatar() {
     },[]);
 
     if(!actualUser){
-        return <div>cargando..</div>
+        return <div className="text-black">cargando..</div>
     }
 
     console.log(actualUser);

@@ -3,20 +3,18 @@ import Menuimg from "@/assets/menu.svg"
 import { useNavigate } from "react-router-dom"
 import { FunctionComponent } from "react";
 import { ProfileAvatar } from "./profileavatar";
+import { useStoreLogin } from "@/lib/token";
 
 interface HeaderProps {
     setAsideOpen: (open: boolean) => void,
     isAsideOpen: boolean
-    setIsLogin: (login : boolean) => void,
-    isLogin : boolean
 }
 
 export const Header: FunctionComponent<HeaderProps> = ({
     setAsideOpen,
-    isAsideOpen,
-    setIsLogin,
-    isLogin
+    isAsideOpen
 }) => {
+    const {login} = useStoreLogin();
     const navigate = useNavigate();
 
     const toBackHome = () => {
@@ -39,7 +37,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
                     <div className="text-2xl font-bold bg text-orange-600" onClick={toBackHome}>AIRLINES</div>
                 </div>
                 <div className="flex flex-row items-center justify-center">
-                    { isLogin ? (
+                    { login ? (
                         <ProfileAvatar></ProfileAvatar>
                     ):(
                         <Button className="bg-orange-600" onClick={toBackLogin}>Ingresar</Button>
