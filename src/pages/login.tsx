@@ -67,7 +67,7 @@ export function Login() {
                 backgroundImage: "url(src/assets/pexels-njeromin-13392086.jpg)"
             }}>
                 <div className="flex items-center justify-center h-screen w-screen">
-                    <div className="w-96 flex flex-col justify-between h-[60%] bg-transparent backdrop-blur-lg bg-opacity-80 border border-[rgb(212,198,198)] rounded-lg p-6">
+                    <div className="w-96 flex flex-col justify-between  bg-transparent backdrop-blur-lg bg-opacity-80 border border-[rgb(212,198,198)] rounded-lg p-6">
                         {/* Título */}
                         <div className="text-center">
                             <h1 className="text-3xl font-bold text-orange-600 cursor-pointer" onClick={toHome}>
@@ -104,7 +104,7 @@ export function Login() {
                                         onChange={(e) => setPassword(e.target.value)}
                                     />
                                 </div>
-                                <div className="text-right mt-2 text-sm">
+                                <div className="text-right  mt-2 text-sm">
                                     <span className="text-orange-700 underline cursor-pointer">
                                         Olvidaste la contraseña?
                                     </span>
@@ -112,18 +112,18 @@ export function Login() {
                             </div>
                         </div>
                         {/* Botón */}
-                        <div className="text-center">
+                        <div className="text-center mt-7">
                             <Button className="mt-4 bg-orange-600 text-white hover:bg-orange-700 transition-all" size="lg"
                                 onClick={loginApi}
                             >
                                 Ingresar
                             </Button>
                         </div>
-                        <div className="text-right mt-2 text-sm">
+                        <div className="text-center font-bold mt-9 text-sm">
                             <span className="text-orange-500">
                                 No tienes cuenta aún?
                             </span>
-                            <span className=' text-orange-700 underline cursor-pointer' onClick={toRegis}>
+                            <span className=' text-orange-700 underline cursor-pointer ml-5' onClick={toRegis}>
                                 Crea una ahora
                             </span>
                         </div>
