@@ -1,5 +1,5 @@
 import { useStoreToken } from "@/lib/token";
-import { Vuelos } from "./interfaces/vuelos";
+import { Vuelos, Vuelo } from "./interfaces/vuelos";
 import { FC, useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { PlaneIcon } from "lucide-react";
@@ -14,6 +14,8 @@ export const Flys : FC<{
     const URL = "http://localhost:8080/api/v1/vuelo";
     const { token } = useStoreToken();
     const [vuelos , setVuelos] = useState<Vuelos>();
+    const [vuelo , setVuelo] = useState<Vuelo>();
+    
     const fetchVuelos = async () => { 
         const res = await fetch(URL,{
             method: "GET",
@@ -44,6 +46,9 @@ export const Flys : FC<{
         return <div className="text-black">cargando..</div>
     }
 
+    const handleClickReserve = (vuelo : Vuelo) => {
+        setVuelo(vuelo);
+    }
     return(
         <div hidden={!inVuelos} >
             <div className="text-black">
@@ -57,7 +62,7 @@ export const Flys : FC<{
                                 </div>
                                 <CardTitle className="text-black">{vuelo.aerolinea.nombre}</CardTitle>
                             </div>
-                            <Button className="bg-orange-600 text-white">Reservar</Button>
+                            <Button className="bg-orange-600 text-white" onClick={() => handleClickReserve(vuelo)}>Reservar</Button>
                         </CardHeader>
                         <CardContent>
                             <div className="text-black flex flex-row items-center justify-around">

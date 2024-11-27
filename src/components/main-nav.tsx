@@ -38,7 +38,7 @@ export const MainNav : FC<{
             title: "Vuelos",
             href: "/vuelos",
             onclick: handleClickVuelos,
-            icon: <PlaneIcon className="w-4 h-4"  color="#000"/>
+            icon: <PlaneIcon className="w-4 h-4"  color="#000" />
         },
         {
             title: "Tus Reservas",
@@ -77,10 +77,10 @@ export const MainNav : FC<{
     return (
         <nav className="flex flex-col space-y-1 text-[#030303]">
             {items.map((item) => (
-                <Button
+                <Button 
                     key={item.href}
                     variant="ghost"
-                    className="justify-start"
+                    className={`justify-start ${item.title === "Vuelos" && inVuelos ? 'bg-orange-600' : ''}`}
                     onClick={item.onclick}
                 >
                     {item.icon}
